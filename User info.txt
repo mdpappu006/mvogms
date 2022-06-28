@@ -1,0 +1,13 @@
+Admin Login: admin
+password: admin123
+
+
+Sample Vendor Access:
+
+username: shop101
+password: shop101
+
+Sample Client Access:
+
+username: jsmith@sample.com
+password: jsmith123
