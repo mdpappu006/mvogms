@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2022 at 07:03 AM
+-- Generation Time: Jul 01, 2022 at 06:22 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -33,15 +33,6 @@ CREATE TABLE `cart_list` (
   `product_id` int(30) NOT NULL,
   `quantity` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `cart_list`
---
-
-INSERT INTO `cart_list` (`id`, `client_id`, `product_id`, `quantity`) VALUES
-(15, 1, 7, 6),
-(16, 1, 4, 11),
-(17, 1, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -131,7 +122,8 @@ INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`, `date_
 (3, 3, 5, 125, '2022-02-10 10:29:01'),
 (3, 5, 3, 150, '2022-02-10 10:29:01'),
 (4, 6, 3, 45.88, '2022-02-10 10:29:01'),
-(4, 7, 3, 285.99, '2022-02-10 10:29:01');
+(4, 7, 3, 285.99, '2022-02-10 10:29:01'),
+(5, 9, 9, 15, '2022-07-01 21:49:00');
 
 -- --------------------------------------------------------
 
@@ -159,7 +151,8 @@ INSERT INTO `order_list` (`id`, `code`, `client_id`, `vendor_id`, `total_amount`
 (1, '202202-00001', 1, 1, 4500, 'This is only my sample address', 5, '2022-02-10 09:56:49', '2022-02-10 11:52:53'),
 (2, '202202-00002', 1, 2, 7359.9, 'This is only my sample address', 0, '2022-02-10 09:56:49', '2022-02-10 09:56:49'),
 (3, '202202-00003', 1, 1, 1325, 'This is only my sample address', 1, '2022-02-10 10:29:00', '2022-02-10 12:09:59'),
-(4, '202202-00004', 1, 2, 2320.61, 'This is only my sample address', 0, '2022-02-10 10:29:01', '2022-02-10 10:29:01');
+(4, '202202-00004', 1, 2, 2320.61, 'This is only my sample address', 5, '2022-02-10 10:29:01', '2022-07-01 21:48:01'),
+(5, '202207-00001', 1, 1, 135, 'This is only my sample address', 0, '2022-07-01 21:49:00', '2022-07-01 21:49:00');
 
 -- --------------------------------------------------------
 
@@ -193,7 +186,9 @@ INSERT INTO `product_list` (`id`, `vendor_id`, `category_id`, `name`, `descripti
 (5, 1, 7, 'Dry 101', '<p><span style=\"color: rgb(0, 0, 0); font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">Nam vel velit eget libero scelerisque varius. Morbi sodales consectetur eros sed lacinia. Phasellus lobortis, neque sed consequat commodo, felis elit tempor sapien, eu blandit ante ex eu magna. Maecenas pulvinar lectus sed augue pharetra porttitor et sed ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent mattis ante est, sed fringilla nisi posuere non.</span><br></p>', 150, 'uploads/products/5.png?v=1644382802', 1, 0, '2022-02-09 13:00:02', '2022-02-09 14:32:16'),
 (6, 2, 4, 'Bottled Juice', '<p><span style=\"color: rgb(0, 0, 0); font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">Quisque commodo tincidunt rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas molestie lacus lacus. Pellentesque velit quam, cursus sit amet congue sed, facilisis et risus. Duis ac consequat eros, id venenatis tortor. Nulla vitae iaculis ante. Morbi id felis non ipsum facilisis sagittis. Integer sed quam et metus pretium tempor sit amet non neque. Praesent eu ante a mauris auctor tempor. Pellentesque luctus erat eget metus vulputate iaculis. Sed rhoncus malesuada ipsum, sed imperdiet leo consequat et. In eu mauris eu felis lacinia semper sit amet nec nisi. Aliquam convallis, neque eget dignissim aliquam, sem enim laoreet arcu, vitae maximus nisi nisl vitae tellus.</span><br></p>', 45.88, 'uploads/products/6.png?v=1644382977', 1, 0, '2022-02-09 13:02:57', '2022-02-09 14:30:59'),
 (7, 2, 2, 'Chicken Wings', '<p><span style=\"color: rgb(0, 0, 0); font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">Quisque aliquet tellus sed nulla vulputate pharetra et nec mauris. Nulla placerat magna sed enim ullamcorper, ac tempor turpis varius. Sed in ipsum id odio varius pellentesque. In hac habitasse platea dictumst. Nunc eget nisi sed nisl pellentesque posuere. Nulla quis nibh nec neque ornare mollis sed vitae eros. Nulla nulla turpis, bibendum euismod purus sit amet, semper aliquam enim. Proin dignissim ac nisl in lobortis. Aenean at justo vel ipsum pretium dapibus. Aliquam lorem mi, laoreet eu leo ac, congue blandit orci. Sed vulputate suscipit nibh, at ultrices ipsum sagittis nec.</span><br></p>', 285.99, 'uploads/products/7.png?v=1644383066', 1, 0, '2022-02-09 13:04:25', '2022-02-09 14:31:48'),
-(8, 2, 4, 'Chicken Fillet Raw', '<p><span style=\"color: rgb(0, 0, 0); font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">Ut viverra maximus orci et tincidunt. Aliquam erat volutpat. Morbi convallis nibh nec libero ultrices, id suscipit nisl facilisis. Maecenas sed consectetur leo, id tempus nisl. Maecenas tincidunt ultrices ex sed feugiat. Nunc sit amet arcu enim. Nunc tristique faucibus elit sed mollis. Cras commodo tincidunt porttitor.</span><br></p>', 195.75, 'uploads/products/8.png?v=1644383112', 1, 0, '2022-02-09 13:05:12', '2022-02-09 14:31:40');
+(8, 2, 4, 'Chicken Fillet Raw', '<p><span style=\"color: rgb(0, 0, 0); font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">Ut viverra maximus orci et tincidunt. Aliquam erat volutpat. Morbi convallis nibh nec libero ultrices, id suscipit nisl facilisis. Maecenas sed consectetur leo, id tempus nisl. Maecenas tincidunt ultrices ex sed feugiat. Nunc sit amet arcu enim. Nunc tristique faucibus elit sed mollis. Cras commodo tincidunt porttitor.</span><br></p>', 195.75, 'uploads/products/8.png?v=1644383112', 1, 0, '2022-02-09 13:05:12', '2022-02-09 14:31:40'),
+(9, 1, 6, 'Beautiful Bags ', '&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; text-align: justify;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet tellus ornare lacus bibendum sollicitudin. Nunc interdum libero sit amet sapien suscipit placerat. Curabitur posuere nec diam ac aliquet. Donec iaculis maximus nisl ut convallis. Sed non leo eros. Ut a mollis est, vitae facilisis justo. Aenean et velit elit. Curabitur rutrum vitae tellus nec volutpat. Vestibulum dapibus viverra tempor. Cras a libero pharetra, tempus purus viverra, eleifend nulla.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 15, 'uploads/products/9.png?v=1656690344', 1, 0, '2022-07-01 21:45:44', '2022-07-01 21:45:44'),
+(10, 2, 3, 'Black Chair with Table', '&lt;p&gt;&lt;span style=&quot;color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;Buy RFL Plastic Dining&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-weight: bold; color: rgb(95, 99, 104); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;Table&lt;/span&gt;&lt;span style=&quot;color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;&amp;nbsp;in Bangladesh at lowest prices on fastest delivery in RFLPlastics.com from ... Dining&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-weight: bold; color: rgb(95, 99, 104); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;Table&lt;/span&gt;&lt;span style=&quot;color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;&amp;nbsp;4&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-weight: bold; color: rgb(95, 99, 104); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;Seat&lt;/span&gt;&lt;span style=&quot;color: rgb(77, 81, 86); font-family: arial, sans-serif; font-size: 14px;&quot;&gt;&amp;nbsp;Oval S/L Print Love Tree-RW.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 5000, 'uploads/products/10.png?v=1656690907', 1, 0, '2022-07-01 21:55:07', '2022-07-01 21:55:07');
 
 -- --------------------------------------------------------
 
@@ -238,11 +233,11 @@ CREATE TABLE `system_info` (
 --
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
-(1, 'name', 'Multi-Vendor Online Grocery Management System'),
-(6, 'short_name', 'MVOGMS - PHP'),
+(1, 'name', 'Multi vendor Eommerce Business Management System'),
+(6, 'short_name', 'MVEBMS - PHP'),
 (11, 'logo', 'uploads/logo-1644367440.png'),
 (13, 'user_avatar', 'uploads/user_avatar.jpg'),
-(14, 'cover', 'uploads/cover-1644367404.png');
+(14, 'cover', 'uploads/cover-1656689166.png');
 
 -- --------------------------------------------------------
 
@@ -269,7 +264,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `date_added`, `date_updated`) VALUES
 (1, 'Adminstrator', 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 'uploads/avatar-1.png?v=1644472635', NULL, 1, '2021-01-20 14:02:37', '2022-02-10 13:57:15'),
-(11, 'Claire', 'Blake', 'cblake', '4744ddea876b11dcb1d169fadf494418', 'uploads/avatar-11.png?v=1644472553', NULL, 2, '2022-02-10 13:55:52', '2022-02-10 13:55:53');
+(11, 'Claire', 'Blake', 'cblake', 'cd74fae0a3adf459f73bbf187607ccea', 'uploads/avatar-11.png?v=1644472553', NULL, 2, '2022-02-10 13:55:52', '2022-07-01 21:16:56');
 
 -- --------------------------------------------------------
 
@@ -383,7 +378,7 @@ ALTER TABLE `vendor_list`
 -- AUTO_INCREMENT for table `cart_list`
 --
 ALTER TABLE `cart_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `category_list`
@@ -401,13 +396,13 @@ ALTER TABLE `client_list`
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_list`
 --
 ALTER TABLE `product_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `shop_type_list`
