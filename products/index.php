@@ -3,7 +3,7 @@ $category_ids = isset($_GET['cids']) ? $_GET['cids'] : 'all';
 ?>
 <div class="content py-3">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card card-outline rounded-0 card-primary shadow">
                 <div class="card-body">
                     <div class="list-group">
@@ -29,7 +29,7 @@ $category_ids = isset($_GET['cids']) ? $_GET['cids'] : 'all';
             </div>
             
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card card-outline card-primary shadow rounded-0">
                 <div class="card-body">
                     <div class="container-fluid">
