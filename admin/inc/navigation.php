@@ -63,6 +63,14 @@
                         </p>
                       </a>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=contact" class="nav-link nav-contact">
+                        <i class="nav-icon fas fa-comment"></i>
+                        <p>
+                          Contact Us
+                        </p>
+                      </a>
+                    </li>
                     <li class="nav-header">Maintenance</li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=reports/order_reports" class="nav-link nav-reports_order_reports">

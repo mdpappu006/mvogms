@@ -75,6 +75,9 @@
               </li>
               <li class="nav-item">
                 <a href="./?page=about" class="nav-link <?= isset($page) && $page =='about' ? "active" : "" ?>">About Us</a>
+              </li>              
+              <li class="nav-item">
+                <a href="./?page=contact" class="nav-link <?= isset($page) && $page =='contact' ? "active" : "" ?>">Contact Us</a>
               </li>
               <?php if($_settings->userdata('id') > 0 && $_settings->userdata('login_type') == 3): ?>
               <li class="nav-item">

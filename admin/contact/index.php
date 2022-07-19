@@ -15,7 +15,7 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Clients</h3>
+		<h3 class="card-title">List of Messages</h3>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
@@ -24,20 +24,18 @@
 				<colgroup>
 					<col width="10%">
 					<col width="10%">
-					<col width="15%">
 					<col width="20%">
 					<col width="20%">
-					<col width="15%">
+					<col width="30%">
 					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Avatar</th>
-						<th>Code</th>
 						<th>Name</th>
-						<th>Email</th>
-						<th>Status</th>
+						<th>Phone</th>
+						<th>Message</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -49,24 +47,22 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
+
 							<td class="text-center"><img src="<?php echo validate_image($row['avatar']) ?>" class="img-avatar img-thumbnail p-0 border-2" alt="client_avatar"></td>
-							<td><?php echo ($row['code']) ?></td>
+
+
 							<td><?php echo ucwords($row['name']) ?></td>
+
 							<td><?php echo ucwords($row['email']) ?></td>
-							<td class="text-center">
-								<?php if($row['status'] == 1): ?>
-									<span class="bage badge-primary px-3 rounded-pill">Active</span>
-								<?php else: ?>
-									<span class="bage badge-danger px-3 rounded-pill">Inactive</span>
-								<?php endif; ?>
-							</td>
+							<td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla provident natus eius nobis, porro impedit optio aut similique commodi labore aspernatur earum iusto magni voluptate doloribus maiores voluptates dolor alias?</td>
+                            
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
+                                  
 				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="?page=clients/manage_client&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
