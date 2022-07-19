@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2022 at 06:22 PM
+-- Generation Time: Jul 19, 2022 at 10:55 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -96,6 +96,31 @@ CREATE TABLE `client_list` (
 INSERT INTO `client_list` (`id`, `code`, `firstname`, `middlename`, `lastname`, `gender`, `contact`, `address`, `email`, `password`, `avatar`, `status`, `delete_flag`, `date_created`, `date_updated`) VALUES
 (1, '202202-00001', 'John', 'D', 'Smith', 'Male', '09123456789', 'This is only my sample address', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 'uploads/clients/1.png?v=1644386016', 1, 0, '2022-02-09 13:53:36', '2022-02-10 13:42:53'),
 (2, '202202-00002', 'test', 'test', 'test', 'Male', '094564654', 'test', 'test@sample.com', '098f6bcd4621d373cade4e832627b4f6', 'uploads/clients/2.png?v=1644471867', 1, 1, '2022-02-10 13:44:26', '2022-02-10 13:44:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(30) NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `phone` text NOT NULL,
+  `message` text NOT NULL,
+  `delete_flag` tinyint(4) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `firstname`, `lastname`, `phone`, `message`, `delete_flag`, `date_created`, `date_updated`) VALUES
+(1, 'Namzul', 'Hossina', '0177515141', 'Testing....', 1, '2022-07-19 14:48:13', '2022-07-19 14:48:43'),
+(2, 'Rana', '1', '546513203161', 'asdasd', 0, '2022-07-19 14:48:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -323,6 +348,12 @@ ALTER TABLE `client_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
@@ -390,6 +421,12 @@ ALTER TABLE `category_list`
 -- AUTO_INCREMENT for table `client_list`
 --
 ALTER TABLE `client_list`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
