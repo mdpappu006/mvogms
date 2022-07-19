@@ -389,6 +389,19 @@ Class Users extends DBConnection {
 			$resp['error'] = $this->conn->error;
 		}
 		return json_encode($resp);
+	}	
+	public function delete_messages(){
+		extract($_POST);
+		$qry = $this->conn->query("UPDATE contact set delete_flag = 1 where id = $id");
+		if($qry){
+			$this->settings->set_flashdata('success',' User Messages successfully deleted.');
+			$resp['status'] = 'success';
+		}else{
+			$resp['status'] = 'failed';
+			$resp['msg'] = 'An error occured while deleting the data.';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
 	}
 }
 
@@ -411,7 +424,10 @@ switch ($action) {
 		echo $users->save_client();
 	break;
 	case 'delete_client':
-		echo $users->delete_client();
+		echo $users->delete_client();	
+		break;
+	case 'delete_messages':
+		echo $users->delete_messages();
 	default:
 		// echo $sysset->index();
 		break;

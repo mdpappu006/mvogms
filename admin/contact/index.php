@@ -42,19 +42,19 @@
 				<tbody>
 					<?php 
 					$i = 1;
-						$qry = $conn->query("SELECT *,CONCAT(lastname, ', ', firstname,' ', COALESCE(middlename)) as `name` from `client_list` where delete_flag = 0 order by CONCAT(lastname, ', ', firstname,' ', COALESCE(middlename)) asc ");
+						$qry = $conn->query("SELECT * FROM `contact` where delete_flag = 0");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
 
-							<td class="text-center"><img src="<?php echo validate_image($row['avatar']) ?>" class="img-avatar img-thumbnail p-0 border-2" alt="client_avatar"></td>
+							<td class="text-center"><img src="./contact/img/avatar-1.png" class="img-avatar img-thumbnail p-0 border-2" alt="client_avatar"></td>
 
 
-							<td><?php echo ucwords($row['name']) ?></td>
+							<td><?php echo ucwords($row['firstname']) ?></td>
 
-							<td><?php echo ucwords($row['email']) ?></td>
-							<td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla provident natus eius nobis, porro impedit optio aut similique commodi labore aspernatur earum iusto magni voluptate doloribus maiores voluptates dolor alias?</td>
+							<td><?php echo ucwords($row['phone']) ?></td>
+							<td> <?php echo ucwords($row['message']) ?></td>
                             
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -78,14 +78,14 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this client permanently?","delete_client",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this Messages permanently?","delete_messages",[$(this).attr('data-id')])
 		})
 		$('.table').dataTable();
 	})
-	function delete_client($id){
+	function delete_messages($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Users.php?f=delete_client",
+			url:_base_url_+"classes/Users.php?f=delete_messages",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",

@@ -1,3 +1,27 @@
+<?php
+	define("DB_HOST", "localhost:3306");
+	define("DB_USER", "root");
+	define("DB_PASS", "");
+	$connect = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    if(isset($_POST['contact-form'])){
+        $fname = trim($_POST['fname']);
+        $lname = trim($_POST['lname']);
+        $phone = trim($_POST['phone']);
+        $messages = filter_input(INPUT_POST, 'mess' ,FILTER_SANITIZE_STRING);
+        $query = "INSERT INTO contact(firstname,lastname,phone,message) values('$fname','$lname','$phone','$messages')";
+        $result = mysqli_query($connect, $query);
+        if($result){      
+            $_SESSION['message'] = true;
+            session_destroy();
+        }else{
+            $_SESSION['error'] = true;
+            session_destroy();
+        }
+    }
+
+?>
+
 <style>
 
     .content.contact{
@@ -18,6 +42,14 @@
         margin-bottom: 25px;
     }
 
+    .success{
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        text-align: center;
+        margin: 0 auto;
+    }
+
 </style>
 
 <div class="content py-3 contact">
@@ -26,6 +58,14 @@
             <h2 class="text-center">Contact</h2>
             <center><hr class="bg-navy border-navy w-25 border-2"></center>
         </div>
+
+        <?php 
+            if(isset($_SESSION['message'])):
+        ?>
+        <div class="alert alert-success success col-4 align-center" role="alert">
+            Messages Has been Sent!
+        </div>
+        <?php endif;?>
 
         <div class="container">
             <div class="row">
@@ -52,7 +92,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea rows="5" placeholder="Your Message" name="messages" required="" class="form-control" spellcheck="false"></textarea>
+                            <textarea rows="5" placeholder="Your Message" name="mess" required="" class="form-control" spellcheck="false"></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" name="contact-form">Send Message</button>
