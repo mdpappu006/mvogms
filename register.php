@@ -34,6 +34,10 @@
           object-fit:scale-down;
           object-position:center center
       }
+
+      .hold-transition{
+        height: auto!important;
+      }
   </style>
   <script>
   </script>
