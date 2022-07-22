@@ -36,7 +36,7 @@
       }
 
       .hold-transition{
-        height: 100vh!important;
+        height: auto!important;
       }
   </style>
   <script>
