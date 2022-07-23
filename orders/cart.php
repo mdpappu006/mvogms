@@ -6,7 +6,103 @@
         object-fit:scale-down;
         object-position:center center
     }
+
+    .bkash-payment .modal-header{
+        border-bottom: 10px solid #E44C70;
+    }    
+    
+    .bkash-payment .modal-header img{
+        width: 350px;
+        margin: 0 auto;
+    } 
+
+    .bkash-payment .header-payment-info{
+        display: flex;
+        margin: 15px;
+    }
+
+    .bkash-payment .header-payment-info .product{
+        margin-right: 10px;
+    }
+
+    .bkash-payment .header-payment-info .product img{
+        width: 60px;
+    }
+
+    .bkash-payment .header-payment-info .product-title h5{
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }    
+    
+    .bkash-payment .header-payment-info .product-title p{
+        color: #9d9d9d;
+        font-size: 14px;
+    }
+
+    .bkash-payment .header-payment-info .product-title{
+        padding-top: 5px;
+    }    
+    
+    .bkash-payment .modal-body{
+        background: url("./orders/logo/input_bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }    
+    
+    .bkash-payment .modal-body .account{
+        text-align: center;
+        margin: 30px 0;
+    }    
+    .bkash-payment .modal-body .account p{
+        color: #fff;
+    }    
+    
+    .bkash-payment .modal-body .account label{
+        margin-top: 10px;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 400;
+    }  
+    
+    .bkash-payment .modal-body .account input{
+        border: none;
+        padding: 5px;
+        width: 350px;
+        text-align: center;
+    }  
+    .bkash-payment .modal-body .account input:focus-visible{
+        outline: none;
+    }
+
+    .payfooter{
+        display: flex;
+    }
+    .payfooter button{
+        width: 50%;
+        color: #FFFFFF;
+        border: none;
+        padding: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        background-color: #d1d3d4;
+    }    
+    .payfooter button.confirm{
+        color: #414042;
+        border-left: 1px solid #BCBCBC;
+        background: #d1d3d4;
+    }
+
+    .ortext{
+        margin-top: 15px;
+    }
 </style>
+
 <div class="content py-3">
     <div class="card card-outline card-primary rounded-0 shadow-0">
         <div class="card-header">
@@ -81,9 +177,55 @@
     </div>
     <div class="clear-fix mb-2"></div>
     <div class="text-right">
-        <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Checkout</a>
+        
+        <!-- Bkash Payment Gateway -->
+        <a href="#" class="btn btn-flat btn-primary btn-sm mr-3" data-toggle="modal" data-target="#exampleModalCenter">Pay with Bkash</a>
+
+        <!-- Bkash Payment Gateway -->
+        <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Checkout on Delivery</a>
+
+
+
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade bkash-payment" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="./orders/logo/bkash_payment.png" alt="bkash">    
+      </div>
+
+    <div class="header-payment-info">
+        <div class="product">
+            <img src="./uploads/logo-1644367440.png" alt="logo-1644367440">
+        </div>
+
+        <div class="product-title">
+            <h5>Canned Soda</h5>
+            <p>Invoice: 00001 </p>
+        </div>
+        
+    </div> 
+
+
+      <div class="modal-body">
+         <div class="account">
+            <p>Your Bkash Account Number</p>
+            <input type="text" placeholder="e.g 01XXXXXXXXX">
+            <label>By clicking on <b>Confirm</b>, you are agreeing to the <b>terms and conditions</b></label>
+         </div>
+      </div>
+      <div class="payfooter">
+        <button type="button" data-dismiss="modal">Close</button>
+        <button type="button" class="confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
     $(function(){
         $('.plus-qty').click(function(){
