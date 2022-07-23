@@ -101,6 +101,20 @@
     .ortext{
         margin-top: 15px;
     }
+
+    .bkash_btn{
+
+        border: none;
+        background: url(./orders/logo/input_bg.png)!important;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }    
+    
+    .bkash_btn .b_logo{
+        width: 32px;
+        position: relative;
+        left: 5px;
+    }
 </style>
 
 <div class="content py-3">
@@ -179,7 +193,7 @@
     <div class="text-right">
         
         <!-- Bkash Payment Gateway -->
-        <a href="#" class="btn btn-flat btn-primary btn-sm mr-3" data-toggle="modal" data-target="#exampleModalCenter">Pay with Bkash</a>
+        <a href="#" class="btn btn-flat btn-primary btn-sm mr-3 bkash_btn" data-toggle="modal" data-target="#exampleModalCenter"> <img class="b_logo" src="./orders/logo/bkash_logo.svg" alt="bkash"> Pay with Bkash</a>
 
         <!-- Bkash Payment Gateway -->
         <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Checkout on Delivery</a>
