@@ -129,6 +129,8 @@
         align-items: center;
         justify-content: flex-end;
         display: flex;
+        width: 40%;
+        padding-right: 15px;
     }         
     .bkash-payment .header-payment-info .cost p{
         color: #333;
