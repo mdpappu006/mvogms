@@ -223,7 +223,7 @@
         <a href="#" class="btn btn-flat btn-primary btn-sm mr-3 bkash_btn" data-toggle="modal" data-target="#pay"> <img class="b_logo" src="./orders/logo/bkash_logo.svg" alt="bkash"> Pay with Bkash</a>
 
         <!-- Bkash Payment Gateway -->
-        <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Checkout on Delivery</a>
+        <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Cash on Delivery</a>
 
 
 
