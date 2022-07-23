@@ -38,10 +38,19 @@
     .bkash-payment .header-payment-info .product-title p{
         color: #9d9d9d;
         font-size: 14px;
-    }
-
-    .bkash-payment .header-payment-info .product-title{
+    }    
+    
+    .product_wrap{
+        display: flex;
         padding-top: 5px;
+        width: 60%;
+    }     
+    
+    .product_wrap .product-title{
+        display: none;
+    }   
+    .product_wrap .product-title:last-child{
+        display: block;
     }    
     
     .bkash-payment .modal-body{
@@ -115,6 +124,18 @@
         position: relative;
         left: 5px;
     }
+
+    .bkash-payment .header-payment-info .cost{
+        align-items: center;
+        justify-content: flex-end;
+        display: flex;
+    }         
+    .bkash-payment .header-payment-info .cost p{
+        color: #333;
+        font-family: 'Roboto', sans-serif;
+        font-size: 25px;
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="content py-3">
@@ -178,13 +199,17 @@
                             <div class="col-3 text-right font-weight-bold"><?= format_num($vtotal) ?></div>
                         </div>
                     </div>
-                <?php endwhile; ?>
+
                     <div class="col-12 border">
                         <div class="d-flex">
                             <div class="col-9 h4 font-weight-bold text-right text-muted">Grand Total</div>
                             <div class="col-3 h4 font-weight-bold text-right"><?= format_num($gtotal) ?></div>
                         </div>
                     </div>
+
+
+                    <?php endwhile; ?>
+                    
                 </div>
             </div>
         </div>
@@ -193,7 +218,7 @@
     <div class="text-right">
         
         <!-- Bkash Payment Gateway -->
-        <a href="#" class="btn btn-flat btn-primary btn-sm mr-3 bkash_btn" data-toggle="modal" data-target="#exampleModalCenter"> <img class="b_logo" src="./orders/logo/bkash_logo.svg" alt="bkash"> Pay with Bkash</a>
+        <a href="#" class="btn btn-flat btn-primary btn-sm mr-3 bkash_btn" data-toggle="modal" data-target="#pay"> <img class="b_logo" src="./orders/logo/bkash_logo.svg" alt="bkash"> Pay with Bkash</a>
 
         <!-- Bkash Payment Gateway -->
         <a href="./?page=orders/checkout" class="btn btn-flat btn-primary btn-sm"><i class="fa fa-money-bill-wave"></i> Checkout on Delivery</a>
@@ -203,42 +228,54 @@
     </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade bkash-payment" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <img src="./orders/logo/bkash_payment.png" alt="bkash">    
-      </div>
-
-    <div class="header-payment-info">
-        <div class="product">
-            <img src="./uploads/logo-1644367440.png" alt="logo-1644367440">
+                 
+    <!-- Modal -->
+    <div class="modal fade bkash-payment" id="pay" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <img src="./orders/logo/bkash_payment.png" alt="bkash">    
         </div>
 
-        <div class="product-title">
-            <h5>Canned Soda</h5>
-            <p>Invoice: 00001 </p>
+        <div class="header-payment-info">
+            <div class="product">
+                <img src="./uploads/logo-1644367440.png" alt="logo-1644367440">
+            </div>
+
+
+            <div class="product_wrap">
+                <?php 
+                    $vendors = $conn->query("SELECT * FROM `vendor_list` where id in (SELECT vendor_id from product_list where id in (SELECT product_id FROM `cart_list` where client_id ='{$_settings->userdata('id')}')) order by `shop_name` asc");
+                    while($vrow=$vendors->fetch_assoc()): 
+                ?>
+                <div class="product-title">
+                    <h5> Marchant: <?= $vrow['shop_name'] ?></h5>
+                    <p>Invoice: <?= $vrow['code']?></p>
+                </div>
+                <?php endwhile;?>
+            </div>
+
+            <div class="cost">
+                <p>৳ <?= format_num($gtotal)?></p>
+            </div>
+        </div> 
+
+        <div class="modal-body">
+            <div class="account">
+                <p>Your Bkash Account Number</p>
+                <input type="text" placeholder="e.g 01XXXXXXXXX">
+                <label>By clicking on <b>Confirm</b>, you are agreeing to the <b>terms and conditions</b></label>
+            </div>
         </div>
-        
-    </div> 
-
-
-      <div class="modal-body">
-         <div class="account">
-            <p>Your Bkash Account Number</p>
-            <input type="text" placeholder="e.g 01XXXXXXXXX">
-            <label>By clicking on <b>Confirm</b>, you are agreeing to the <b>terms and conditions</b></label>
-         </div>
-      </div>
-      <div class="payfooter">
-        <button type="button" data-dismiss="modal">Close</button>
-        <button type="button" class="confirm">Confirm</button>
-      </div>
+        <div class="payfooter">
+            <button type="button" data-dismiss="modal">Close</button>
+            <button type="button" class="confirm">Confirm</button>
+        </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
+<!-- Modal -->
+
 
 <script>
     $(function(){
